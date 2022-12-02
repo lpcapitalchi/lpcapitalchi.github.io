@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bitcoin Price Calculator</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Calculate Satoshis per CuckBuck (USD)</h1>
+  <form>
+    <label>Enter how many CuckBucks you want to convert to sats:</label>
+    <input type="number" id="btc-amount">
+    <button type="button" onclick="calculatePrice()">Calculate</button>
+  </form>
+  <p>For <span id="btc-amount-display">0</span> CuckBuck(s) you will receive <span id="usd-price-display">0</span> satoshis</p>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -10,7 +10,7 @@
   <h1>Calculate Satoshis per CuckBuck (USD)</h1>
   <form id="calculate-form">
     <label>Enter how many CuckBucks you want to convert to sats:</label>
-    <input type="number" id="btc-amount">
+    <input type="number" id="btc-amount" autofocus onfocus="this.select()">
     <button type="button" onclick="calculatePrice()" id="calculate-button">Calculate</button>
   </form>
   <p>For <span id="btc-amount-display">0</span> CuckBuck(s) you get <span id="usd-price-display">0</span> satoshis</p>

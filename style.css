@@ -44,3 +44,8 @@ button[type="button"]:hover {
 button[type="button"]:active {
   background-color: #006600;
 }
+
+a {
+  text-align: center;
+  font-size: 2em;
+}

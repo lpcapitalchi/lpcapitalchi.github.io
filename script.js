@@ -37,3 +37,6 @@ input.addEventListener("keypress", function(event) {
     document.getElementById("calculate-button").click();
   }
 });
+
+var result = calculatePrice(); // undefined, the function does not return anything
+window.onload = result;

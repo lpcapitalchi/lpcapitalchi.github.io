@@ -16,9 +16,11 @@ function calculatePrice() {
       // Calculate the price of the user-entered amount of Bitcoin in US dollars
       const usdPrice = btcAmount * data.bpi.USD.rate_float;
       const satsPrice = 100000000 * btcAmount / data.bpi.USD.rate_float;
+      const btcPrice = data.bpi.USD.rate_float;
 
       // Display the calculated price on the page
       document.getElementById('usd-price-display').innerText = satsPrice.toLocaleString('en-US', {maximumFractionDigits:0});
+      document.getElementById('fullcoin-price-display').innerText = btcPrice.toLocaleString('en-US', {maximumFractionDigits:0});
     });
 }
 

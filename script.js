@@ -38,5 +38,19 @@ input.addEventListener("keypress", function(event) {
   }
 });
 
-var result = calculatePrice(); // undefined, the function does not return anything
+function displayPrice() {
+
+  // Fetch the current exchange rate from the API
+  fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+      // Calculate the price of the user-entered amount of Bitcoin in US dollars
+      const btcPrice = data.bpi.USD.rate_float;
+
+      // Display the calculated price on the page
+      document.getElementById('fullcoin-price-display').innerText = btcPrice.toLocaleString('en-US', {maximumFractionDigits:0});
+    });
+}
+
+var result = displayPrice();
 window.onload = result;

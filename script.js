@@ -1,5 +1,6 @@
 // URL for the CoinDesk Bitcoin Price Index API
 const API_URL = 'https://api.coindesk.com/v1/bpi/currentprice.json';
+const API_URL2 = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
 // Function to calculate the price of the user-entered amount of Bitcoin in US dollars
 function calculatePrice() {
@@ -41,14 +42,14 @@ input.addEventListener("keypress", function(event) {
 function displayPrice() {
 
   // Fetch the current exchange rate from the API
-  fetch(API_URL)
+  fetch(API_URL2)
     .then(response => response.json())
     .then(data => {
       // Calculate the price of the user-entered amount of Bitcoin in US dollars
-      const btcPrice = data.bpi.USD.rate_float;
+      const btcPrice2 = data.bpi.USD.rate_float;
 
       // Display the calculated price on the page
-      document.getElementById('fullcoin-price-display').innerText = btcPrice.toLocaleString('en-US', {maximumFractionDigits:0});
+      document.getElementById('fullcoin-price-display').innerText = btcPrice2.toLocaleString('en-US', {maximumFractionDigits:0});
     });
 }
 

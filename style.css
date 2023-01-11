@@ -1,27 +1,23 @@
-body {
+* {
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 h1 {
   text-align: center;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 form {
   text-align: center;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 label {
   display: block;
   margin-bottom: 0.5em;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 p {
   display: block;
   text-align: center;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 input[type="number"] {
@@ -29,7 +25,6 @@ input[type="number"] {
   max-width: 20em;
   padding: 0.5em;
   font-size: 1em;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 button[type="button"] {
@@ -40,7 +35,6 @@ button[type="button"] {
   color: white;
   border: none;
   border-radius: 0.25em;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 button[type="button"]:hover {
@@ -61,10 +55,8 @@ a {
   border: none;
   border-radius: 0.25em;
   text-decoration: none;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 .text-center {
   text-align: center;
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }

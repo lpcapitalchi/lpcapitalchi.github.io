@@ -27,6 +27,26 @@ input[type="number"] {
   font-size: 1em;
 }
 
+#calculate-button:active {
+  background-color: white;
+}
+
+#calculate-button:hover {
+  color: black
+}
+
+#calculate-button {
+  background: white;
+  height:45px;
+  width:125px;
+  background-color: #FF9900;
+  border: none;
+  border-radius: 0.25em;
+  margin-top: 0.5em;
+  padding: 0.5em;
+  font-size: 1em;
+}
+
 button[type="button"] {
   margin-top: 0.5em;
   padding: 0.5em;
@@ -35,14 +55,6 @@ button[type="button"] {
   color: white;
   border: none;
   border-radius: 0.25em;
-}
-
-button[type="button"]:hover {
-  background-color: #009900;
-}
-
-button[type="button"]:active {
-  background-color: #006600;
 }
 
 a {
@@ -59,4 +71,8 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+a:hover {
+  color: black;
 }

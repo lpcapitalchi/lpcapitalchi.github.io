@@ -81,11 +81,17 @@ a:hover {
   border: 3px;
   border-style: dotted;
   color: white;
-  width: 50%;
   text-align: center;
   margin: 0 auto;
 }
 
 [class*="output-box"] {
   width: 90%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .output-box {
+    max-width: 50%;
+  }
 }

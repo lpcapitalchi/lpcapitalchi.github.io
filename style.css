@@ -76,3 +76,12 @@ a {
 a:hover {
   color: black;
 }
+
+#output-box {
+  border: 3px;
+  border-style: dotted;
+  color: white;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}

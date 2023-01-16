@@ -85,3 +85,7 @@ a:hover {
   text-align: center;
   margin: 0 auto;
 }
+
+[class*="output-box"] {
+  width: 90%;
+}

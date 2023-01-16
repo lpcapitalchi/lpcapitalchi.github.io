@@ -77,7 +77,7 @@ a:hover {
   color: black;
 }
 
-#output-box {
+.output-box {
   border: 3px;
   border-style: dotted;
   color: white;

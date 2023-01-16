@@ -20,11 +20,15 @@
         <input type="number" id="btc-amount" autofocus onfocus="this.select()">
         <button type="button" onclick="calculatePrice()" id="calculate-button">Calculate</button>
       </form>
-      <p><span id="btc-amount-display">0</span> CuckBuck(s) = <span id="usd-price-display">0</span> satoshis</p>
-      <script src="script.js"></script>
-      <p>1 satoshi = 0.00000001 Bitcoin</p>
-      <p>100,000,000 satoshis = 1 Bitcoin</p>
-      <p>1 Bitcoin = $<span id="fullcoin-price-display"></span></p>
+      <br>
+      <div id="output-box">
+        <script src="script.js"></script>
+        <p><span id="btc-amount-display">0</span> CuckBuck(s) = <span id="usd-price-display">0</span> satoshis</p>
+        <p>1 satoshi = 0.00000001 Bitcoin</p>
+        <p>100,000,000 satoshis = 1 Bitcoin</p>
+        <p>1 Bitcoin = $<span id="fullcoin-price-display"></span></p>
+      </div>
+      <br>
       <p><img src="bitcoinlgo.png" style="max-width: 100%" alt="Exchange of fiat for Bitcoin"></p>
     </main>
     <footer>

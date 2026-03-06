@@ -1,28 +1,42 @@
-// URL for the CoinDesk Bitcoin Price Index API
-const API_URL = 'https://api.coindesk.com/v1/bpi/currentprice.json';
-const API_URL2 = 'https://api.coindesk.com/v1/bpi/currentprice.json';
+// Reliable BTC-USD spot rate from Coinbase.
+const API_URL = 'https://api.coinbase.com/v2/prices/BTC-USD/spot';
+const SATOSHIS_PER_BTC = 100000000;
 
-// Function to calculate the price of the user-entered amount of Bitcoin in US dollars
-function calculatePrice() {
-  // Get the user-entered amount of Bitcoin from the input field
-  const btcAmount = Number(document.getElementById('btc-amount').value);
+async function getBtcUsdRate() {
+  const response = await fetch(API_URL, { cache: 'no-store' });
 
-  // Display the user-entered amount of Bitcoin on the page
-  document.getElementById('btc-amount-display').innerText = btcAmount.toLocaleString('en-US');
+  if (!response.ok) {
+    throw new Error(`Failed to fetch BTC price (${response.status})`);
+  }
 
-  // Fetch the current exchange rate from the API
-  fetch(API_URL)
-    .then(response => response.json())
-    .then(data => {
-      // Calculate the price of the user-entered amount of Bitcoin in US dollars
-      const usdPrice = btcAmount * data.bpi.USD.rate_float;
-      const satsPrice = 100000000 * btcAmount / data.bpi.USD.rate_float;
-      const btcPrice = data.bpi.USD.rate_float;
+  const data = await response.json();
+  const rate = Number.parseFloat(data?.data?.amount);
 
-      // Display the calculated price on the page
-      document.getElementById('usd-price-display').innerText = satsPrice.toLocaleString('en-US', {maximumFractionDigits:0});
-      document.getElementById('fullcoin-price-display').innerText = btcPrice.toLocaleString('en-US', {maximumFractionDigits:0});
-    });
+  if (!Number.isFinite(rate) || rate <= 0) {
+    throw new Error('Invalid BTCUSD rate returned by API');
+  }
+
+  return rate;
+}
+
+// Convert user-entered USD amount to sats.
+async function calculatePrice() {
+  const usdAmount = Number(document.getElementById('btc-amount').value);
+  const safeUsdAmount = Number.isFinite(usdAmount) && usdAmount > 0 ? usdAmount : 0;
+
+  document.getElementById('btc-amount-display').innerText = safeUsdAmount.toLocaleString('en-US');
+
+  try {
+    const btcUsdRate = await getBtcUsdRate();
+    const satsPrice = (safeUsdAmount / btcUsdRate) * SATOSHIS_PER_BTC;
+
+    document.getElementById('usd-price-display').innerText = satsPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    document.getElementById('fullcoin-price-display').innerText = btcUsdRate.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  } catch (error) {
+    document.getElementById('usd-price-display').innerText = 'Unavailable';
+    document.getElementById('fullcoin-price-display').innerText = 'Unavailable';
+    console.error(error);
+  }
 }
 
 // Get the input field
@@ -40,18 +54,14 @@ input.addEventListener("keypress", function(event) {
 });
 
 function displayPrice() {
-
-  // Fetch the current exchange rate from the API
-  fetch(API_URL2)
-    .then(response => response.json())
-    .then(data => {
-      // Calculate the price of the user-entered amount of Bitcoin in US dollars
-      const btcPrice2 = data.bpi.USD.rate_float;
-
-      // Display the calculated price on the page
-      document.getElementById('fullcoin-price-display').innerText = btcPrice2.toLocaleString('en-US', {maximumFractionDigits:0});
+  getBtcUsdRate()
+    .then((btcPrice) => {
+      document.getElementById('fullcoin-price-display').innerText = btcPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    })
+    .catch((error) => {
+      document.getElementById('fullcoin-price-display').innerText = 'Unavailable';
+      console.error(error);
     });
 }
 
-var result = displayPrice();
-window.onload = result;
+window.onload = displayPrice;
